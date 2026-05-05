@@ -1,0 +1,16 @@
+name: consultoria_de_imagem
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: consulta_user
+      POSTGRES_PASSWORD: consulta_pass
+      POSTGRES_DB: consulta_db
+    volumes:
+      - db_consulta:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    profiles: ["dev"]
+volumes:
+  db_consulta:
