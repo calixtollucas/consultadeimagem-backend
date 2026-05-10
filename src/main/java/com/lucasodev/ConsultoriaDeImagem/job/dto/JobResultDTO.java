@@ -3,5 +3,6 @@ package com.lucasodev.ConsultoriaDeImagem.job.dto;
 import com.lucasodev.ConsultoriaDeImagem.analysis.dto.BiotypeResult;
 
 public record JobResultDTO(
-        BiotypeResult biotype
+        String biotype,
+        String biotypeDescription
 ){}
