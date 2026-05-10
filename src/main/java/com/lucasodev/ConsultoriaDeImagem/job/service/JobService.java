@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JobService {
 
-    private JobRepository jobRepository;
+    //private JobRepository jobRepository;
     //private AnalysisService analysisService;
 
     public JobResultDTO processJob(AnalysisRequestDTO analysisRequest) {
