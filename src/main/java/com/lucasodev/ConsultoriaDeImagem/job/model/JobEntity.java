@@ -10,6 +10,26 @@ import java.util.UUID;
 @Entity
 public class JobEntity {
 
+    protected JobEntity() {}
+    private JobEntity(UUID id,
+                      JobStatus status,
+                      String imageUrl,
+                      Double shoulderWidth,
+                      Double hipSize,
+                      Double waistSize,
+                      Double chest,
+                      LocalDateTime createdAt,
+                      LocalDateTime updatedAt) {
+        this.id = id;
+        this.status = status;
+        this.imageUrl = imageUrl;
+        this.shoulderWidth = shoulderWidth;
+        this.hipSize = hipSize;
+        this.waistSize = waistSize;
+        this.chest = chest;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -40,4 +60,20 @@ public class JobEntity {
 
     @Column(name = "error_message")
     private String errorMessage;
+
+    public static JobEntity createJob(String imageUrl, Double shoulderWidth,
+                                      Double hipSize, Double waitSize,
+                                      Double chest) {
+
+        return new JobEntity(
+                UUID.randomUUID(),
+                JobStatus.PROCESSING,
+                imageUrl,
+                shoulderWidth,
+                hipSize,
+                waitSize,
+                chest,
+                LocalDateTime.now(),
+                null);
+    }
 }
