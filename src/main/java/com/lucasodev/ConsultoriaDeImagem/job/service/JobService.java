@@ -1,5 +1,7 @@
 package com.lucasodev.ConsultoriaDeImagem.job.service;
 
+import com.lucasodev.ConsultoriaDeImagem.analysis.dto.BiotypeResult;
+import com.lucasodev.ConsultoriaDeImagem.analysis.service.BiotypeAnalyzer;
 import com.lucasodev.ConsultoriaDeImagem.job.dto.AnalysisRequestDTO;
 import com.lucasodev.ConsultoriaDeImagem.job.dto.CreateJobDTO;
 import com.lucasodev.ConsultoriaDeImagem.job.dto.JobResultDTO;
@@ -22,8 +24,16 @@ public class JobService {
                 analysisRequest.chest(),
                 "example.com/image.jpeg"));
         //chama processamento
+        BiotypeResult biotypeResult = BiotypeAnalyzer.analyze(
+                analysisRequest.shoulderWidth(),
+                analysisRequest.waistSize(),
+                analysisRequest.hipSize(),
+                analysisRequest.chest());
         //retorna resposta
-        return null;
+        return new JobResultDTO(
+                biotypeResult.biotype(),
+                biotypeResult.description()
+                );
     }
 
     public void createJob(CreateJobDTO createJobDto) {
