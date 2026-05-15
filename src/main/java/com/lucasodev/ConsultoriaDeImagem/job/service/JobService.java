@@ -15,6 +15,10 @@ public class JobService {
     private JobRepository jobRepository;
     //private AnalysisService analysisService;
 
+    public JobService(JobRepository jobRepository) {
+        this.jobRepository = jobRepository;
+    }
+
     public JobResultDTO processJob(AnalysisRequestDTO analysisRequest) {
         //inicia job no banco de dados
         this.createJob(new CreateJobDTO(
@@ -22,7 +26,7 @@ public class JobService {
                 analysisRequest.waistSize(),
                 analysisRequest.hipSize(),
                 analysisRequest.chest(),
-                "example.com/image.jpeg"));
+                analysisRequest.imageUrl()));
         //chama processamento
         BiotypeResult biotypeResult = BiotypeAnalyzer.analyze(
                 analysisRequest.shoulderWidth(),

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(name = "jobs")
 public class JobEntity {
 
     protected JobEntity() {}
@@ -66,7 +67,7 @@ public class JobEntity {
                                       Double chest) {
 
         return new JobEntity(
-                UUID.randomUUID(),
+                null,
                 JobStatus.PROCESSING,
                 imageUrl,
                 shoulderWidth,

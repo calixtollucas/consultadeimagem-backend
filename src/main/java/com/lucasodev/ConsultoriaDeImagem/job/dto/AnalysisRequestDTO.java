@@ -4,6 +4,7 @@ public record AnalysisRequestDTO(
         Double shoulderWidth,
         Double waistSize,
         Double hipSize,
-        Double chest
+        Double chest,
+        String imageUrl
 ) {
 }
